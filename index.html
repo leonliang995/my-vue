@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id='app'>
+    <h1>{{name}}</h1>
+    <h2 l-text='name'></h2>
+    <h3>{{age}}</h3>
+    <h4>{{doubleAge}}</h4>
+    <input type="text" l-model="name">
+    <button @click="changeName">Lvue</button>
+    <div l-html="html"></div>
+  </div>
+  <script src="./lvue.js"></script>
+  <script src="./compile.js"></script>
+  <script>
+
+    let app = document.getElementById('app');
+
+    const myVue = new LVue({
+      el: "#app",
+      data: {
+        name: 'I am test.',
+        age: 18,
+        html: '<button>我是按钮</button>'
+      },
+      created() {
+        console.log('开始创建');
+        setTimeout(() => {
+          this.name = "I am new test."
+        }, 1500)
+      },
+      methods: {
+        changeName() {
+          this.name = '新测试';
+          this.age = 1
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
